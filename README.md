@@ -113,3 +113,29 @@ and vice versa. help(Vector) and help(Matrix) return major class overviews.
 
 Import the linear module into your library. The exact file with all of the necessary code is linear.py.
 
+## Potential additions to library in future
+
+### Vector Class
+
+* Method for checking if current vector and other vector are orthogonal
+
+* Support for plotting/graphing a certain amount of 2D maybe 3D vectors using matplotlib or a similar library
+
+* Cross products
+
+### Matrix Class
+
+* Row Reducing Matrices
+
+* Finding inverse of Matrices
+
+* Transposing matrices
+
+* Standalone function for fitting a straight line with least squares approximation
+
+* General least squares method as part of matrices class
+
+
+
+
+
