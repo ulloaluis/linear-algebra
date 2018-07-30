@@ -6,7 +6,7 @@
 
 My implementation of a linear algebra library in Python. Consists of
 a Vector and Matrix class that can be compatible with one another, as
-well as useful methods for interacting with both concepts.
+well as useful methods for interacting with both concepts/classes.
 """
 
 from math import pow, sqrt  # C implementation is best
