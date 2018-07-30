@@ -176,6 +176,7 @@ class Vector:
         :type other: Vector
         :return: The dot product of the current vector and other vector.
         :rtype: int, float
+        :raises: ValueError when vectors are not the same length
         """
         if len(self.comp) == len(other.comp):
             return sum([x * y for x, y in zip(self.comp, other.comp)])
@@ -192,6 +193,7 @@ class Vector:
         :type other: Vector
         :return: a vector with the resulting added components
         :rtype: Vector
+        :raises: ValueError when vectors are not the same length
         """
         if len(self.comp) == len(other.comp):
             return Vector([x+y for x, y in zip(self.comp, other.comp)])
@@ -208,6 +210,7 @@ class Vector:
        :type other: Vector
        :return: a vector with the resulting subtracted components
        :rtype: Vector
+       :raises: ValueError when vectors are not the same length
        """
         if len(self.comp) == len(other.comp):
             return Vector([x-y for x, y in zip(self.comp, other.comp)])
@@ -224,6 +227,7 @@ class Vector:
         :type other: Vector, integer, float
         :return: number value representing dot product of both vectors
         :rtype: int, float
+        :raises: ValueError when vectors are not the same length
         """
         if isinstance(other, int) or isinstance(other, float):
             return Vector([x * other for x in self.comp])
@@ -400,6 +404,7 @@ class Matrix:
         :type other: Matrix
         :return: a matrix with the resulting added components
         :rtype: Matrix
+        :raises: ValueError when matrices do not have same dimensions
         """
         new_comp = []
         if self.rows == other.rows and self.cols == other.cols:
@@ -418,6 +423,7 @@ class Matrix:
        :type other: Matrix
        :return: a matrix with the resulting subtracted components
        :rtype: Matrix
+       :raises: ValueError when matrices do not have same dimensions
        """
         new_comp = []
         if self.rows == other.rows and self.cols == other.cols:
@@ -443,6 +449,7 @@ class Matrix:
         :type other: Matrix, int, float
         :return: the resulting matrix
         :rtype: Matrix
+        :raises: ValueError when there's a matrix multiplication size mismatch ([mxn]*[nxp]=[mxp])
         """
         new_matrix = []
         if isinstance(other, int) or isinstance(other, float):
