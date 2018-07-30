@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-:data: 2018-07-30
+:date: 2018-07-30
 :author: Luis Ulloa
 :license: MIT-license
 
