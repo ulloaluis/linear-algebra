@@ -1,5 +1,5 @@
 # linear-algebra
-implemented vector and matrix classes while learning docstrings (reST format) for Python 3+.
+implemented vector and matrix classes with reST-formatted docstrings in Python 3+
 
 ## General Layout
 
