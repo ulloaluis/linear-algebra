@@ -9,8 +9,8 @@ a Vector and Matrix class that can be compatible with one another, as
 well as useful methods for interacting with both concepts/classes.
 """
 
-from math import pow, sqrt  # C implementation is best
-import linear_tests
+from math import pow, sqrt          # C implementation is best
+from linear_lib.linear_tests import *
 
 
 class Vector:
@@ -22,6 +22,9 @@ class Vector:
     they are not allowed to change the attributes directly, and should instead use
     the appropriate methods (ex. resize() or set()).
 
+    Getting values directly from the vector can be achieved by accessing the
+    component in comp using 0 based indexing.
+
     class Vector
     __init__(comp)          - takes in a list of components or a valid mx1 Matrix
     resize(length)          - while preserving current elements or filling with 0's, changes current vector length
@@ -31,6 +34,7 @@ class Vector:
     normalize(change=False) - returns normalized current vector, if change=True, internal vector is updated
     same_normalized(other)  - returns True/False depending on equality of the two vectors once normalized
     dot(other)              - returns the dot product of th two vectors
+    cross(other)            - returns the cross product of u x v (u is current vector, v is other)
     operator +              - returns sum of two vectors, component wise addition
     operator -              - returns difference of two vectors, component wise subtraction
     operator *              - alternate for dot product, or can use for vector scaling
@@ -182,6 +186,25 @@ class Vector:
             return sum([x * y for x, y in zip(self.comp, other.comp)])
         else:
             raise ValueError("Invalid vectors - must be of same length.")
+
+    def cross(self, other):
+        """
+        For 3-dimensional vectors (3x1), this function allows you to take
+        the cross product, which produces a vector i.e. orthogonal to both.
+
+        :param other: 3D Vector (b in a X b)
+        :return: Vector
+        """
+
+        # Simplified version, after determinants: u is current vector v is other
+        # u x v = (u2v3 - u3v2)i - (u1v3-u3v1)j + (u1v2-u2v1)k
+        if self.length == 3 and other.length == 3:
+            i_hat = self.comp[1]*other.comp[2] - self.comp[2]*other.comp[1]
+            j_hat = -1 * (self.comp[0]*other.comp[2] - self.comp[2]*other.comp[0])
+            k_hat = self.comp[0]*other.comp[1] - self.comp[1]*other.comp[0]
+            return Vector([i_hat, j_hat, k_hat])
+        else:
+            raise ValueError("Invalid vectors - Can only take the cross product of 3D vectors.")
 
     def __add__(self, other):
         """
@@ -516,4 +539,4 @@ class Matrix:
 
 
 if __name__ == "__main__":
-    linear_tests.test()
+    test()

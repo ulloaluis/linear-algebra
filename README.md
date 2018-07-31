@@ -7,7 +7,8 @@ The Vector class imitates the m x 1 vector from linear algebra and
 contains many useful functions for dealing and interacting with Vectors.
 There are no getters and setters by design; the user should understand that
 they are not allowed to change the attributes directly, and should instead use
-the appropriate methods (ex. resize() or set()).
+the appropriate methods (ex. resize() or set()). They can access the component
+attribute to get specific values, but they should not change it themselves.
     
     class Vector
     
@@ -27,6 +28,8 @@ the appropriate methods (ex. resize() or set()).
     
     dot(other)              - returns the dot product of th two vectors
     
+    cross(other)            - returns the cross product of u x v (u is current vector, v is other)
+
     operator +              - returns sum of two vectors, component wise addition
     
     operator -              - returns difference of two vectors, component wise subtraction
@@ -121,9 +124,11 @@ Import the linear module into your library. The exact file with all of the neces
 
 * Support for plotting/graphing a certain amount of 2D maybe 3D vectors using matplotlib or a similar library
 
-* Cross products
+* ~~Cross products~~
 
 ### Matrix Class
+
+* determinant
 
 * Row Reducing Matrices
 

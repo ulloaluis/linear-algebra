@@ -11,7 +11,7 @@ Note: Will re-write this test file using the proper Python
       testing library at a later time.
 """
 
-from linear import *
+from linear_lib.linear import *
 
 
 def test_vector():
@@ -47,6 +47,12 @@ def test_vector():
     assert(x.resize(0) == Vector())
     assert(str(x) == "<empty>")
     assert(x.set([1, 2, 3]) == Vector([1, 2, 3]) and x.length == 3)
+
+    x = Vector([1, 2, 3])
+    y = Vector([2, 2, 2])
+    assert(x.cross(y) == Vector([-2, 4, -2]))
+
+    assert(Vector([1, 0, 0]).cross(Vector([0, 1, 0])) == Vector([0, 0, 1]))  # i x j = k
 
 
 def test_matrix():
