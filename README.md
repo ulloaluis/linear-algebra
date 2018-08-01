@@ -66,6 +66,8 @@ the appropriate methods (ex. resize() or set()).
     
     det()                   - takes the determinant of the current NxN matrix
     
+    transpose()             - transposes the current mxn matrix to an nxm matrix (1st row becomes 1st col, etc.)
+
     operator +              - returns sum of two matrices, component wise addition
     
     operator -              - returns difference of two matrices, component wise subtraction

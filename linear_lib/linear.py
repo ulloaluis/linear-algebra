@@ -317,6 +317,7 @@ class Matrix:
     set(comp, index=-None)  - sets entire list at once or one specific index/value (tuple or array as (row, col))
     zero()                  - replaces values in current matrix with all zeroes and returns it
     det()                   - takes the determinant of the current NxN matrix
+    transpose()             - transposes the current mxn matrix to an nxm matrix (1st row becomes 1st col, etc.)
     operator +              - returns sum of two matrices, component wise addition
     operator -              - returns difference of two matrices, component wise subtraction
     operator *              - matrix multiplication, matrix-vector product, scalar multiplication
@@ -330,6 +331,9 @@ class Matrix:
     def __init__(self, comp=[]):
         """
         Initializes the matrix to the specified format. Default is an empty 0x0 matrix
+
+        Note: It is up to the user to pass well-formed matrices, that is, two different
+                rows cannot be different lengths, etc.
 
         :param comp: list of lists where each individual list represents a row,
                      similar to how numpy implements arrays; could also be a vector
@@ -451,6 +455,22 @@ class Matrix:
             determinant += constant * Matrix(new_matrix).det()
         return determinant
 
+    def transpose(self):
+        """
+        This function will return the transpose of the current matrix. (A -> A^T)
+        "First row becomes first column, second row becomes second column, etc."
+
+        :return: Transposed matrix
+        :rtype: Matrix
+        """
+
+        new_matrix = [[] for _ in range(self.cols)]     # num rows becomes num cols
+        for r in range(self.rows):                      # go through each row
+            for c in range(self.cols):                  # for each col in row
+                new_matrix[c].append(self.comp[r][c])   # disperse columns into new rows
+
+        return Matrix(new_matrix)
+
     def __add__(self, other):
         """
         Adds two matrices and returns a matrix with the respective components
@@ -540,7 +560,8 @@ class Matrix:
     def __pow__(self, power, modulo=None):
         """
         Allows you to raise a matrix to a power, that is, each of the
-        components of the current matrix is raised to a power.
+        components of the current matrix is raised to a power. Can use
+        power 0 to fill the current matrix with all 1s.
 
         :param power: value to raise each component to
         :param modulo: optional parameter that applies the modulus operator to each result

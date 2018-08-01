@@ -78,6 +78,7 @@ def test_matrix():
     assert(x.resize(0, 0) == Matrix())
     assert(x.set([[1, 2], [2, 3]]) == Matrix([[1, 2], [2, 3]]) and x.rows == 2 and x.cols == 2)
 
+    # determinants
     x = Matrix([[1, 2, 3],
                 [4, 5, 6],
                 [7, 8, 9]])
@@ -85,7 +86,6 @@ def test_matrix():
 
     x = Matrix([[3, 2],
                 [6, 4]])
-
     assert(x.det() == 0)
 
     x = x.set([[1, 2, 3], [7, 5, 3], [2, -4, 1]])
@@ -94,6 +94,12 @@ def test_matrix():
     assert(x.set([[1, 7, 9, 2, 5], [3, 2, 3, 4, 6], [1, 2, 3, 4, 5], [4, 4, 6, 0, 9], [3, 3, 1, 2, 1]]).det() == 624)
     assert(x.set([[0, 0], [0, 0]]).det() == 0)
     assert(x.set([[0, 0, 0], [3, 9, 7], [6, 6, 4]]).det() == 0)
+
+    # transposes
+    assert(x.set([[1, 2]]).transpose() == Matrix([[1], [2]]))
+    assert(x.set([[1, 2], [3, 4]]).transpose() == Matrix([[1, 3], [2, 4]]))
+    assert(x.set([[1, 2, 3], [4, 5, 6], [7, 8, 9]]).transpose() == Matrix([[1, 4, 7], [2, 5, 8], [3, 6, 9]]))
+    assert(x.set([[1, 2], [3, 4], [5, 6]]).transpose() == Matrix([[1, 3, 5], [2, 4, 6]]))
 
 
 def test_class_overlaps():
