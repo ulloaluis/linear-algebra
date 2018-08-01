@@ -193,7 +193,8 @@ class Vector:
         the cross product, which produces a vector i.e. orthogonal to both.
 
         :param other: 3D Vector (b in a X b)
-        :return: Vector
+        :return: Vector representing cross product of current and other
+        :rtype: Vector
         """
 
         # Simplified version, after determinants: u is current vector v is other
@@ -417,6 +418,37 @@ class Matrix:
         """
         self.comp = [[0]*self.cols for _ in range(self.rows)]
         return self
+
+    def det(self):
+        """
+        Returns the determinant of an nxn matrix that is at least a 2x2. (recursive)
+
+        :return: the determinant of the current matrix
+        :rtype: int, float
+        """
+
+        if self.rows != self.cols:
+            raise ValueError("Invalid matrix - only N x N matrices supported.")
+
+        # base case -> 2 by 2
+        if self.rows == 2 and self.cols == 2:  # ad - bc
+            return self.comp[0][0] * self.comp[1][1] - self.comp[0][1] * self.comp[1][0]
+
+        # going along top, along first row (not optimized to find best path)
+        top_row = self.comp[0]
+        determinant = 0
+        for col_i in range(len(top_row)):
+            # don't include in same row or column
+            new_matrix = self.comp[1:]            # remove top row
+            for r in range(len(new_matrix)):      # remove this column from each row
+                new_matrix[r] = new_matrix[r][:col_i] + new_matrix[r][col_i + 1:]
+
+            constant = top_row[col_i]
+            if col_i % 2 == 1:
+                constant *= -1  # every other constant is negative
+
+            determinant += constant * Matrix(new_matrix).det()
+        return determinant
 
     def __add__(self, other):
         """

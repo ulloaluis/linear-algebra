@@ -78,6 +78,23 @@ def test_matrix():
     assert(x.resize(0, 0) == Matrix())
     assert(x.set([[1, 2], [2, 3]]) == Matrix([[1, 2], [2, 3]]) and x.rows == 2 and x.cols == 2)
 
+    x = Matrix([[1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9]])
+    assert(x.det() == 0)
+
+    x = Matrix([[3, 2],
+                [6, 4]])
+
+    assert(x.det() == 0)
+
+    x = x.set([[1, 2, 3], [7, 5, 3], [2, -4, 1]])
+    assert(x.det() == -99)
+    assert(x.set([[1, 3, 5, 9], [1, 3, 1, 7], [4, 3, 9, 7], [5, 2, 0, 9]]).det() == -376) # 4x4
+    assert(x.set([[1, 7, 9, 2, 5], [3, 2, 3, 4, 6], [1, 2, 3, 4, 5], [4, 4, 6, 0, 9], [3, 3, 1, 2, 1]]).det() == 624)
+    assert(x.set([[0, 0], [0, 0]]).det() == 0)
+    assert(x.set([[0, 0, 0], [3, 9, 7], [6, 6, 4]]).det() == 0)
+
 
 def test_class_overlaps():
     # converting from Vector to Matrix
