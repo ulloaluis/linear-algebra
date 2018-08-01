@@ -138,7 +138,7 @@ Import the linear module into your library. The exact file with all of the neces
 
 * Finding inverse of Matrices
 
-* Transposing matrices
+* ~~Transposing matrices~~
 
 * Standalone function for fitting a straight line with least squares approximation
 
