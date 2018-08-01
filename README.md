@@ -64,6 +64,8 @@ the appropriate methods (ex. resize() or set()).
     
     zero()                  - replaces values in current matrix with all zeroes and returns it
     
+    det()                   - takes the determinant of the current NxN matrix
+    
     operator +              - returns sum of two matrices, component wise addition
     
     operator -              - returns difference of two matrices, component wise subtraction
@@ -128,7 +130,7 @@ Import the linear module into your library. The exact file with all of the neces
 
 ### Matrix Class
 
-* determinant
+* ~~Determinant~~
 
 * Row Reducing Matrices
 

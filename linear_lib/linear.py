@@ -316,6 +316,7 @@ class Matrix:
     resize(rows, cols)      - while preserving current elements or filling with 0's, changes current vector length
     set(comp, index=-None)  - sets entire list at once or one specific index/value (tuple or array as (row, col))
     zero()                  - replaces values in current matrix with all zeroes and returns it
+    det()                   - takes the determinant of the current NxN matrix
     operator +              - returns sum of two matrices, component wise addition
     operator -              - returns difference of two matrices, component wise subtraction
     operator *              - matrix multiplication, matrix-vector product, scalar multiplication
