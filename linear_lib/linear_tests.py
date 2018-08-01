@@ -122,6 +122,8 @@ def test_class_overlaps():
     xx = Vector([1.1, 2.2, 3.3])
     assert(aa*xx == Vector([16.939999999999998, 38.72, 60.50000000000001]))
 
+    assert(Matrix(Vector([1, 2, 3])).transpose() == Matrix([[1, 2, 3]]))
+
 
 def test():
     test_vector()
