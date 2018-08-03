@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="linear-algebra",
-    version="1.0.0",
+    version="0.0.1",
     author="Luis Ulloa",
     author_email="ulloa@stanford.edu",
     description="Vector and matrix classes that can be used with each other.",
