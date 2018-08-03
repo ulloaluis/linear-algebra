@@ -1,4 +1,4 @@
-# linear-algebra
+# linear-algebra-ulloa
 implemented vector and matrix classes with reST-formatted docstrings in Python 3+
 
 ## General Layout
