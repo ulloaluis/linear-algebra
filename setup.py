@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="linear-algebra",
+    name="linear_algebra_ulloa",
     version="0.0.1",
     author="Luis Ulloa",
     author_email="ulloa@stanford.edu",
