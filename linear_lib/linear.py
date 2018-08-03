@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 """
-:date: 2018-07-30
-:author: Luis Ulloa
-:license: MIT-license
-
 My implementation of a linear algebra library in Python. Consists of
 a Vector and Matrix class that can be compatible with one another, as
 well as useful methods for interacting with both concepts/classes.
+
+github repository: https://github.com/ulloaluis/linear-algebra
 """
 
 from math import gcd, pow, sqrt, isclose
 from linear_lib.linear_tests import *
 from fractions import Fraction
+
+__author__ = "Luis Ulloa"
+__license__ = "MIT"
+__version__ = "0.0.1"
+__maintainer__ = "Luis Ulloa"
+__email__ = "ulloa@stanford.edu"
 
 
 class Vector:
