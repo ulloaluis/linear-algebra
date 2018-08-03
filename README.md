@@ -59,7 +59,6 @@ like mag() or zero() (those which change current vector comp).
     
     comp = vector composition, list of components
     
-    
     length = number of components in vector
     
     rows = same as length, used with cols for backwards compatibility with Matrix
@@ -115,6 +114,7 @@ that change the underlying data type.
     len() method            - returns tuple formatted as (row, col)
   
     get and set [][]        - can get rows and specific values with [] or [][], and set specific values with [][]
+
 
     comp = matrix composition, list of lists where each list is a row
   
@@ -193,6 +193,10 @@ Import the linear module into your library. The exact file with all of the neces
 * ~~static method for generating arbitrarily sized identity matrix~~
 
 * ~~static method for concatenating two matrices~~
+
+* ~~floats are shown as proper fractions when printed~~
+
+* ~~equality tests account for floating point error~~
 
 
 
