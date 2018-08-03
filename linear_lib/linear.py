@@ -697,7 +697,7 @@ class Matrix:
         else:  # scale both
             new_matrix[r] = [elem * const for elem in new_matrix[r]]
             new_matrix[other_row] = [elem * above for elem in new_matrix[other_row]]
-        new_matrix[r] = [curr - other for curr, other in
+        new_matrix[r] = [other - curr for curr, other in
                          zip(new_matrix[r], new_matrix[other_row])]
         return new_matrix
 
@@ -719,32 +719,19 @@ class Matrix:
 
         # adjust matrix so rows are in proper descending order / putting any pre-made pivots in place
         new_matrix = sorted(self.comp, reverse=True)
-        start = 0   # by sorting, even if start is off, loop will be skipped and start will move ahead
+        pivot_row = 0
 
-        # store zero column indexes so we can adjust pivots later
-        zero_cols = []
         for c in range(self.cols):
-            if all(new_matrix[r][c] == 0 for r in range(self.rows)):
-                zero_cols.append(c)
+            new_matrix = sorted(new_matrix, reverse=True)   # swap any out of place rows
+            if pivot_row < self.rows and new_matrix[pivot_row][c] != 0:
+                for r in range(pivot_row+1, self.rows):     # use pivot row to clear other rows
+                    while new_matrix[r][c] != 0:
 
-        r = curr_col = start                 # current row with pivot, current column with pivot
-        while r < self.rows:                 # loop through each row after first
-            for row_below_i in range(r+1, self.rows):    # enforce rows below have 0 in respective column r (rxr or cxc)
-                while curr_col < self.rows and curr_col < self.cols and new_matrix[row_below_i][curr_col] != 0:
-                    good_const_i = r     # row above/curr row won't mess with leading 0's
-                    while new_matrix[good_const_i][curr_col] == 0:
-                            good_const_i += 1
+                        new_matrix = self._clear_pos(new_matrix, r, c, pivot_row)
 
-                    new_matrix = self._clear_pos(new_matrix, row_below_i, curr_col, good_const_i)
-
-            # skip column from pivot consideration if it's a zero col
-            curr_col += 1   # initial +1
-            r += 1
-            while curr_col in zero_cols:
-                curr_col += 1
-
+                pivot_row += 1
         new_matrix = self._clean_matrix(new_matrix)
-        return Matrix(new_matrix)
+        return Matrix(sorted(new_matrix, reverse=True))     # swap any out of place rows
 
     def row_reduce(self):
         """
@@ -796,7 +783,7 @@ class Matrix:
             if i < self.cols:
                 pivot = row[i]
                 new_matrix[r] = [elem // pivot if elem % pivot == 0 else elem / pivot for elem in row]
-        return Matrix(new_matrix)
+        return Matrix(sorted(new_matrix, reverse=True))  # ensure ordering is still valid
 
     def inverse(self):
         """
@@ -994,3 +981,4 @@ class Matrix:
 
 if __name__ == "__main__":
     test()
+

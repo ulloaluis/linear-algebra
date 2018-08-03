@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="linear_algebra_ulloa",
-    version="0.0.1",
+    version="0.0.2",
     author="Luis Ulloa",
     author_email="ulloa@stanford.edu",
-    description="Vector and matrix classes that can be used with each other.",
+    description="Vector/Matrix classes - refined rref and fixed a bug. Added author information.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ulloaluis/linear-algebra",
