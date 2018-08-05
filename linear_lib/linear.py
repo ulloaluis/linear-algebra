@@ -13,7 +13,7 @@ from fractions import Fraction
 
 __author__ = "Luis Ulloa"
 __license__ = "MIT"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __maintainer__ = "Luis Ulloa"
 __email__ = "ulloa@stanford.edu"
 
